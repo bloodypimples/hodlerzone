@@ -32,3 +32,21 @@ belongs_to :friend, class_name: "User"
 5. Like
 
 6. Notification
+
+# Functionalities
+
+1. Sign up for accounts
+
+2. Add friends
+
+3. Make posts
+
+4. Reply to posts
+
+5. Upvote/ downvote posts
+
+6. Search for a user
+
+7. Send private messages
+
+8. Timeline
