@@ -37,6 +37,8 @@ belongs_to :friend, class_name: "User"
 
 1. Sign up for accounts
 
+* error messages
+
 2. Add friends
 
 3. Make posts
@@ -50,3 +52,17 @@ belongs_to :friend, class_name: "User"
 7. Send private messages
 
 8. Timeline
+
+# Pages
+
+* Sign up *
+
+* Sign in *
+
+* Profile page
+
+* Edit user info *
+
+* Hodlers
+
+* Timeline

@@ -3,5 +3,5 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  validates :username, presence: true, format: { with: /\A[a-z0-9]+\Z/ }
+  validates :first_name, :last_name, presence: true
 end

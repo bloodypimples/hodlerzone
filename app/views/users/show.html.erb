@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-md-3 user card">
+    <div class="profile-picture">
+      <%= gravatar_image_tag(@user.email, gravatar: { size: 512, default: 'mm' }) %>
+    </div>
+    <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+    <% if @user == current_user %>
+      <a href="<%= edit_user_registration_path %>">Edit profile</a>
+    <% end %>
+  </div>
+</div>
