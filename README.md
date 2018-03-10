@@ -37,8 +37,6 @@ belongs_to :friend, class_name: "User"
 
 1. Sign up for accounts
 
-* error messages
-
 2. Add friends
 
 3. Make posts
@@ -53,6 +51,8 @@ belongs_to :friend, class_name: "User"
 
 8. Timeline
 
+9. Recommended hodlers
+
 # Pages
 
 * Sign up *
@@ -62,7 +62,5 @@ belongs_to :friend, class_name: "User"
 * Profile page
 
 * Edit user info *
-
-* Hodlers
 
 * Timeline
