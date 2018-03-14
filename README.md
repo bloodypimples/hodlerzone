@@ -9,7 +9,3 @@
 * Send private messages
 * Timeline
 * Recommended hodlers
-* Prevent unconfirmed friends from displaying in friend list
-* Friend request notifications
-* Friend request interface
-* Friend request notifications through ActionCable
