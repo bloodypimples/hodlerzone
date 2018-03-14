@@ -20,6 +20,7 @@
               <% if f %>
                 <div class="col-4">
                   <a href="<%= user_path(f) %>">
+                    <span class="avatar overlay"><%= f.first_name %></span>
                     <%= gravatar_image_tag(f.email, gravatar: { size: 100, default: 'mm' }) %>
                   </a>
                 </div>

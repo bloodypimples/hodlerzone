@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180310080314) do
+ActiveRecord::Schema.define(version: 20180311120736) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer "user_id"
     t.integer "friend_id"
     t.boolean "accepted", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "receiver_id"
+    t.integer "sender_id"
+    t.integer "notifiable_id"
+    t.string "notifiable_type"
+    t.datetime "read_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

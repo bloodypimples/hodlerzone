@@ -1,6 +1,10 @@
+$background-color: black;
+
 body{
   font-weight: 100;
   padding: 100px 0px;
+  background-color: $background-color;
+  color: white;
 }
 
 .light{
@@ -21,10 +25,12 @@ body{
 }
 
 .user.card{
+  background-color: $background-color;
+  border: 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+  // box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
   box-sizing: border-box;
   padding-top: 30px;
   padding-bottom: 30px;
@@ -73,5 +79,31 @@ body{
         }
       }
     }
+  }
+}
+
+.avatar.overlay{
+  position: absolute;
+  right: 5px;
+  left: 5px;
+  height: 100%;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: linear-gradient(transparent, #333);
+  color: white;
+}
+
+.moon{
+  width: 100%;
+  img{
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px){
+  .user.friends.card{
+    display: none;
   }
 }

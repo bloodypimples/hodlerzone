@@ -7,6 +7,11 @@ class FriendshipsController < ApplicationController
     if current_user != @friend && current_user.get_friendship(@friend).empty?
       @friendship = current_user.friendships.build(friend_id: @friend.id)
       if @friendship.save
+        Notification.create(
+          receiver_id: @friend.id,
+          sender_id: current_user.id,
+          notifiable: @friendship
+        )
         flash[:notice] = 'Friend request is sent.'
         redirect_to user_path(@friend)
       else

@@ -1,0 +1,10 @@
+<h1>Alerts</h1>
+<div class="list-group">
+  <% if !@notifications.empty? %>
+    <% @notifications.each do |n| %>
+      <%= render "partials/notification", notification: n %>
+    <% end %>
+  <% else %>
+    <p>There are currently no alerts.
+  <% end %>
+</div>

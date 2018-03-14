@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :friends, through: :friendships
   has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id"
   has_many :inverse_friends, through: :inverse_friendships, source: :user
+  has_many :notifications
 
   def get_friendship(friend)
     Friendship.where(user_id: self.id, friend_id: friend.id)

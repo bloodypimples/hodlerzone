@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
   <div class="container">
     <a class="navbar-brand" href="<%= root_path %>"><span class="light">Hodler</span><span class="strong">Zone</span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,6 +8,11 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= notifications_path %>">
+              Alerts
+            </a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="<%= user_path(current_user) %>"><%= current_user.first_name %></a>
           </li>
