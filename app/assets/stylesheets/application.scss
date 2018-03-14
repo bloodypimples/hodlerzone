@@ -30,9 +30,7 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
-  // box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
   box-sizing: border-box;
-  padding-top: 30px;
   padding-bottom: 30px;
   margin-left: 0px;
   margin-right: 0px;
@@ -102,8 +100,36 @@ body{
   }
 }
 
+.user.show{
+  padding-top: 30px;
+  .friends{
+    h2{
+      margin-bottom: 30px;
+    }
+    .friend{
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.mobile_friends_count{
+  display: none;
+}
+
 @media (max-width: 767px){
   .user.friends.card{
     display: none;
+  }
+  .mobile_friends_count{
+    display: block;
+  }
+}
+
+@media (max-width: 991px){
+  .banner{
+    .moon{
+      position: absolute;
+    }
+    margin-bottom: 30px;
   }
 }

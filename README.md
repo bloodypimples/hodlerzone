@@ -1,5 +1,13 @@
+# Main functionalities
+* Signing up for accounts
+* Make friends
+* Post things
+* Post replies
+* Thumbs up, middle fingers up
+* Timeline
+* Private messages
+
 # Todos
-* Mobile UI for profile page
 * Sign up for accounts
 * Add friends
 * Make posts

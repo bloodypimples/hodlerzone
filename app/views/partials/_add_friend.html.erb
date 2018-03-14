@@ -1,26 +1,26 @@
-<% if @user != current_user && user_signed_in? %>
+<% if user != current_user && user_signed_in? %>
 
   <!-- Add friend -->
-  <% if current_user.get_friendship(@user).empty? %>
+  <% if current_user.get_friendship(user).empty? %>
 
     <%= button_to 'Add friend',
-    friendships_path(friend_id: @user),
+    friendships_path(friend_id: user),
     class: " btn btn-small btn-primary" %>
 
   <!-- Friend request sent -->
-  <% elsif !current_user.get_friendship(@user).first.accepted && current_user.get_friendship(@user).first.user_id == current_user.id %>
+  <% elsif !current_user.get_friendship(user).first.accepted && current_user.get_friendship(user).first.user_id == current_user.id %>
 
     <button type="button" class=" btn btn-small btn-secondary" disabled>Friend request sent</button>
 
   <!-- Accept friend request -->
-  <% elsif !current_user.get_friendship(@user).first.accepted && current_user.get_friendship(@user).first.friend_id == current_user.id %>
+  <% elsif !current_user.get_friendship(user).first.accepted && current_user.get_friendship(user).first.friend_id == current_user.id %>
 
-    <%= button_to "Accept friend request", friendship_path(@user.id), method: 'patch', class: " btn btn-small btn-primary" %>
+    <%= button_to "Accept friend request", friendship_path(user.id), method: 'patch', class: " btn btn-small btn-primary" %>
 
   <!-- Unfriend -->
   <% else %>
 
-    <%= button_to "Unfriend", friendship_path(@user.id), method: 'delete', class: "btn btn-danger", data: {confirm: "Are you sure?"} %>
+    <%= button_to "Unfriend", friendship_path(user.id), method: 'delete', class: "btn btn-danger", data: {confirm: "Are you sure?"} %>
 
   <% end %>
 

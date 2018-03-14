@@ -1,34 +1,7 @@
 <div class="row">
-  <div class="col-xl-3 col-md-4">
-    <div class="row user card">
-      <div class="profile-picture">
-        <%= gravatar_image_tag(@user.email, gravatar: { size: 512, default: 'mm' }) %>
-      </div>
-      <h2><%= @user.first_name %> <%= @user.last_name %></h2>
-      <% if @user == current_user %>
-        <a href="<%= edit_user_registration_path %>">Edit profile</a>
-      <% end %>
-      <%= render 'partials/add_friend' %>
-    </div>
+  <%= render "user", user: @user %>
 
-    <div class="row user friends card">
-      <p><%= @user.get_all_friends.count %> friends</p>
-      <div class="row">
-        <% @friend_groups.each do |group| %>
-          <div class="row">
-            <% group.each do |f| %>
-              <% if f %>
-                <div class="col-4">
-                  <a href="<%= user_path(f) %>">
-                    <span class="avatar overlay"><%= f.first_name %></span>
-                    <%= gravatar_image_tag(f.email, gravatar: { size: 100, default: 'mm' }) %>
-                  </a>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-    </div>
+  <div class="col-xl-3 col-md-4">
+    <!-- Timeline code -->
   </div>
 </div>

@@ -2,6 +2,12 @@ class FriendshipsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_friendship, only: [:update, :destroy]
 
+  def index
+    @user = User.find(params[:id])
+    @friends = @user.get_all_friends
+    @friend_groups = @friends.in_groups_of(3)
+  end
+
   def create
     @friend = User.find(params[:friend_id])
     if current_user != @friend && current_user.get_friendship(@friend).empty?
