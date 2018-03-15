@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_attached_file :image, styles: { large: ["500x500>", :jpg], medium: ["250x250>", :jpg], thumb: ["80x80", :jpg] }, default_url: "/assets/default.png"
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+  after_commit :compress_image, on: [:create, :update]
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -29,5 +32,17 @@ class User < ApplicationRecord
 
   def get_unread_alerts
     Notification.where(receiver_id: self.id, read_at: nil)
+  end
+
+  def compress(image_path)
+    system "convert #{image_path} -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace sRGB #{image_path}"
+  end
+
+  def compress_image
+    if self.image?
+      compress(self.image.path(:large))
+      compress(self.image.path(:medium))
+      compress(self.image.path(:thumb))
+    end
   end
 end

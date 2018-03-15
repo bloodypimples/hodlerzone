@@ -2,7 +2,7 @@
   <div class="row user card">
     <div class="profile-picture">
       <a href="<%= user_path(user) %>">
-        <%= gravatar_image_tag(user.email, gravatar: { size: 512, default: 'mm' }) %>
+        <%= image_tag @user.image.url(:medium) %>
       </a>
     </div>
     <h2>
@@ -36,7 +36,7 @@
               <div class="col-4">
                 <a href="<%= user_path(f) %>">
                   <span class="avatar overlay"><%= f.first_name %></span>
-                  <%= gravatar_image_tag(f.email, gravatar: { size: 100, default: 'mm' }) %>
+                  <%= image_tag(f.image.url(:thumb)) %>
                 </a>
               </div>
             <% end %>
