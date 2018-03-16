@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
 
     if @post.destroy
       flash[:notice] = "Deleted post."
@@ -23,6 +23,22 @@ class PostsController < ApplicationController
     end
 
     redirect_back(fallback_location: root_path)
+  end
+
+  def downvote
+    @post = Post.find(params[:id])
+    @post.downvote_by current_user
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def upvote
+    @post = Post.find(params[:id])
+    @post.upvote_by current_user
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

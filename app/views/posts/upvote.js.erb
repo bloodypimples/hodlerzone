@@ -1,0 +1,2 @@
+$("#post<%= @post.id %> #upvote").html("<%= @post.get_upvotes.size.to_s %>👍")
+$("#post<%= @post.id %> #downvote").html("<%= @post.get_downvotes.size.to_s %>🖕")

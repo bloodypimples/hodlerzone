@@ -1,4 +1,4 @@
-<div class="media mt-4">
+<div class="media mt-4" id="post<%= post.id %>">
   <img class="mr-3" src="<%= post.user.image.url(:thumb) %>">
   <div class="media-body">
     <a href="<%= user_path(post.user) %>">
@@ -9,8 +9,14 @@
       <%= simple_format(post.body) %>
     <p>
     <div class="actions">
-      <% if current_user = post.user %>
-        <%= link_to "Delete", post_path(post), method: :delete %>
+      <span><%= link_to post.get_upvotes.size.to_s + "👍", like_post_path(post), method: :put, remote: true, id: "upvote" %></span>
+      <span><%= link_to post.get_downvotes.size.to_s + "🖕", dislike_post_path(post), method: :put, remote: true, id: "downvote" %></span>
+      |
+      <a href="#">Reply</a>
+      |
+      <% if current_user == post.user %>
+        <%= link_to "Delete", post_path(post), method: :delete,
+        data: {confirm: "Are you sure?"} %>
       <% end %>
     </div>
   </div>

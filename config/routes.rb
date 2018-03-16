@@ -14,5 +14,10 @@ Rails.application.routes.draw do
 
   get '/alerts', to: 'notifications#index', as: 'notifications'
 
-  resources :posts
+  resources :posts do
+    member do
+      put "like", to: "posts#upvote"
+      put "dislike", to: "posts#downvote"
+    end
+  end
 end
