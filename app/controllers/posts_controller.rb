@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @post = current_user.posts.build(post_params)
 
@@ -12,6 +14,15 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
+
+    if @post.destroy
+      flash[:notice] = "Deleted post."
+    else
+      flash[:alert] = "An error has occured."
+    end
+
+    redirect_back(fallback_location: root_path)
   end
 
   private
