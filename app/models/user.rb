@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :posts
   has_attached_file :image, styles: { large: ["500x500>", :jpg], medium: ["250x250>", :jpg], thumb: ["80x80", :jpg] }, default_url: "/assets/default.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   after_commit :compress_image, on: [:create, :update]

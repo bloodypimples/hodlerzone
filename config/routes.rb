@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   patch 'friendships/:id', to: 'friendships#update', as: 'friendship'
 
   get '/alerts', to: 'notifications#index', as: 'notifications'
+
+  resources :posts
 end

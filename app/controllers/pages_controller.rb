@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def home
     if user_signed_in?
-      render 'pages/home'
+      render 'pages/timeline'
     else
       @minimum_password_length = Devise.password_length.min
       render 'devise/registrations/new'

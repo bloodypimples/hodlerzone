@@ -1,0 +1,6 @@
+<%= form_for Post.new do |f| %>
+  <div class="form-group">
+    <%= f.text_area :body, class: "form-control", rows: 3, placeholder: get_post_hint %>
+  </div>
+  <button type="submit" class="btn btn-primary mb-2">Post</button>
+<% end %>

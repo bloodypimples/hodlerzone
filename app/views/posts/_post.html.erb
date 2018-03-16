@@ -1,0 +1,12 @@
+<div class="media mt-4">
+  <img class="mr-3" src="<%= post.user.image.url(:thumb) %>">
+  <div class="media-body">
+    <a href="<%= user_path(post.user) %>">
+      <h5 class="mt-0"><%= post.user.first_name %> <%= post.user.last_name %></h5>
+    </a>
+    <small><%= time_ago_in_words(post.created_at) %> ago</small>
+    <p>
+      <%= simple_format(post.body) %>
+    <p>
+  </div>
+</div>
