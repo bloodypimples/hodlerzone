@@ -10,7 +10,15 @@ class PostsController < ApplicationController
       flash[:alert] = "An error has occured."
     end
 
-    redirect_back(fallback_location: root_path)
+    respond_to do |format|
+      format.js {
+        flash[:notice] = nil
+        flash[:alert] = nil
+      }
+      format.html {
+        redirect_back(fallback_location: root_path)
+      }
+    end
   end
 
   def destroy
@@ -28,6 +36,7 @@ class PostsController < ApplicationController
   def downvote
     @post = Post.find(params[:id])
     @post.downvote_by current_user
+
     respond_to do |format|
       format.js
     end
@@ -36,6 +45,7 @@ class PostsController < ApplicationController
   def upvote
     @post = Post.find(params[:id])
     @post.upvote_by current_user
+
     respond_to do |format|
       format.js
     end
@@ -44,6 +54,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:user_id, :parent_id, :body)
+    params.require(:post).permit(:user_id, :post_id, :body)
   end
 end

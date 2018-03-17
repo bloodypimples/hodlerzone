@@ -58,5 +58,3 @@ gem 'devise', '~> 4.4', '>= 4.4.1'
 gem 'paperclip', '~> 6.0'
 
 gem 'acts_as_votable', '~> 0.11.1'
-
-gem 'jquery-rails', '~> 4.3', '>= 4.3.1'

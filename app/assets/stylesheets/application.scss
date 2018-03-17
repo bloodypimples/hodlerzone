@@ -122,6 +122,16 @@ body{
   }
 }
 
+.reply.form{
+  &.hidden{
+    display: none;
+  }
+}
+
+.post.user.image{
+  width: 80px;
+}
+
 @media (max-width: 767px){
   .user.friends.card{
     display: none;

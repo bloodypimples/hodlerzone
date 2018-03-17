@@ -12,5 +12,11 @@
 //
 //= require rails-ujs
 //= require_tree .
-//= require jquery
-//= require jquery_ujs
+
+$(document).ready(function(){
+  // toggle reply form
+  $('.reply-toggle').click(function(e){
+    e.preventDefault();
+    $(this).parents().eq(1).children('.reply.form').toggleClass('hidden');
+  })
+})

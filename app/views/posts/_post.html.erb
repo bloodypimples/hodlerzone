@@ -1,9 +1,11 @@
 <div class="media mt-4" id="post<%= post.id %>">
-  <img class="mr-3" src="<%= post.user.image.url(:thumb) %>">
+  <img class="mr-3 post user image" src="<%= post.user.image.url(:thumb) %>">
   <div class="media-body">
-    <a href="<%= user_path(post.user) %>">
-      <h5 class="mt-0"><%= post.user.first_name %> <%= post.user.last_name %></h5>
-    </a>
+    <h5 class="mt-0">
+      <a href="<%= user_path(post.user) %>">
+        <%= post.user.first_name %> <%= post.user.last_name %>
+      </a>
+    </h5>
     <small><%= time_ago_in_words(post.created_at) %> ago</small>
     <p>
       <%= simple_format(post.body) %>
@@ -11,13 +13,32 @@
     <div class="actions">
       <span><%= link_to post.get_upvotes.size.to_s + "👍", like_post_path(post), method: :put, remote: true, id: "upvote" %></span>
       <span><%= link_to post.get_downvotes.size.to_s + "🖕", dislike_post_path(post), method: :put, remote: true, id: "downvote" %></span>
-      |
-      <a href="#">Reply</a>
-      |
+      <% if user_signed_in? %>
+        |
+        <a href="#" class="reply-toggle">Reply</a>
+      <% end %>
       <% if current_user == post.user %>
+        |
         <%= link_to "Delete", post_path(post), method: :delete,
         data: {confirm: "Are you sure?"} %>
       <% end %>
     </div>
+    <div class="hidden reply form mt-3">
+      <% if post.post_id %>
+        <!-- post_id for level 2 and onward replies are always the id of the root post -->
+        <%= render 'posts/form', placeholder: "Write your reply...", post_id: post.post_id %>
+      <% else %>
+        <%= render 'posts/form', placeholder: "Write your reply...", post_id: post.id %>
+      <% end %>
+    </div>
+
+    <!-- replies -->
+    <% if !post.post_id %>
+      <div class="replies">
+        <% post.replies.each do |reply| %>
+          <%= render 'posts/post', post: reply %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

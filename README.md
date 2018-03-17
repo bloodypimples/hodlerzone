@@ -5,7 +5,6 @@
 * Send private messages
 * Timeline
 * Recommended hodlers
-* Post replies
 
 # Production notes
 * ImageMagick must be installed for paperclip

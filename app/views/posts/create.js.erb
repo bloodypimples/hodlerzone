@@ -1,0 +1,16 @@
+$('.reply.form textarea').val('')
+$('.reply.form').addClass('hidden')
+
+var html = `<%= render "posts/post", post: @post %>`
+
+<% if @post.post_id %>
+  $("#post<%= @post.post_id %> .replies").append(html)
+  $('html, body').scrollTop($("#post<%= @post.id %>").offset().top - 100)
+<% else %>
+  $(".posts").prepend(html)
+<% end %>
+
+$('#post<%= @post.id %> .reply-toggle').click(function(e){
+  e.preventDefault();
+  $(this).parents().eq(1).children('.reply.form').toggleClass('hidden');
+})
