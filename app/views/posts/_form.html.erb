@@ -6,6 +6,11 @@
       <!-- if reply form, submit parent post's id -->
       <%= f.hidden_field :post_id, value: post_id %>
     <% end %>
+
+    <% if(defined?(receiver_id)) %>
+      <!-- if posting other people's walls, add poster_id -->
+      <%= f.hidden_field :receiver_id, value: receiver_id %>
+    <% end %>
   </div>
 
   <button type="submit" class="btn btn-primary mb-2">Post</button>

@@ -2,17 +2,25 @@
   <%= render "user", user: @user %>
 
   <div class="col-xl-9 col-md-8">
-    <% if current_user == @user || current_user.is_friends_with?(@user) %>
-      <%= render 'posts/form', placeholder: get_post_hint %>
+    <% if user_signed_in? %>
+      <% if current_user == @user || current_user.is_friends_with?(@user) %>
+        <% if current_user == @user %>
+          <%= render 'posts/form', placeholder: get_post_hint %>
+        <% else %>
+          <!-- render the form with the hidden poster_id field if current user is a friend -->
+          <%= render 'posts/form', placeholder: get_post_hint, receiver_id: @user.id %>
+        <% end %>
+      <% end %>
     <% end %>
 
     <div class="posts">
-      <% if !@user.posts.empty? %>
+      <% if !@user.posts.where(post_id: nil).empty? %>
+      <!-- check only for root posts, ignores replies -->
         <% @posts.each do |post| %>
           <%= render 'posts/post', post: post %>
         <% end %>
       <% else %>
-        <br><%= @user.first_name %> hasn't posted anything yet.
+        <br><p class="no-posts"><%= @user.first_name %> hasn't posted anything yet.</p>
       <% end %>
     </div>
   </div>

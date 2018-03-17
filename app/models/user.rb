@@ -36,7 +36,11 @@ class User < ApplicationRecord
   end
 
   def is_friends_with?(friend)
-    !self.friends.where(id: friend.id).empty?
+    if self.friends.where(id: friend.id).empty? && self.inverse_friends.where(id: friend.id).empty?
+      false
+    else
+      true
+    end
   end
 
   def compress(image_path)

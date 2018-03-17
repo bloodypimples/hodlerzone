@@ -2,7 +2,20 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @post = current_user.posts.build(post_params)
+    if params[:post][:receiver_id]
+      # create external post
+      @user = User.find(params[:post][:receiver_id])
+
+      if current_user.is_friends_with?(@user)
+        @post = @user.posts.build(post_params)
+        @post.poster_id = current_user.id
+      else
+        @post = current_user.posts.build(post_params)
+      end
+    else
+      # create internal post
+      @post = current_user.posts.build(post_params)
+    end
 
     if @post.save
       flash[:notice] = "Successfully posted."
@@ -54,6 +67,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:user_id, :post_id, :body)
+    params.require(:post).permit(:user_id, :post_id, :body, :poster_id)
   end
 end
