@@ -2,7 +2,7 @@
   <%= render "user", user: @user %>
 
   <div class="col-xl-9 col-md-8">
-    <% if current_user == @user %>
+    <% if current_user == @user || current_user.is_friends_with?(@user) %>
       <%= render 'posts/form', placeholder: get_post_hint %>
     <% end %>
 
@@ -12,7 +12,7 @@
           <%= render 'posts/post', post: post %>
         <% end %>
       <% else %>
-        <%= @user.first_name %> hasn't posted anything yet.
+        <br><%= @user.first_name %> hasn't posted anything yet.
       <% end %>
     </div>
   </div>

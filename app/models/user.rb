@@ -35,6 +35,10 @@ class User < ApplicationRecord
     Notification.where(receiver_id: self.id, read_at: nil)
   end
 
+  def is_friends_with?(friend)
+    !self.friends.where(id: friend.id).empty?
+  end
+
   def compress(image_path)
     system "convert #{image_path} -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace sRGB #{image_path}"
   end
