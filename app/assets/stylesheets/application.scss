@@ -53,6 +53,23 @@ body{
   margin-bottom: 15px;
 }
 
+form{
+  .btn-primary{
+    margin-bottom: 0px;
+  }
+}
+
+.btn-group{
+  > form:first-child .btn{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  > form:last-child .btn{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
 #error_explanation{
   ul{
     li{
@@ -129,12 +146,21 @@ body{
   }
 }
 
-.post.user.image{
+.user.image{
   width: 80px;
 }
 
 .hidden{
   display: none;
+}
+
+.friend.message{
+  > a{
+    order: 1
+  }
+  .media-body{
+    text-align: right;
+  }
 }
 
 @media (max-width: 767px){

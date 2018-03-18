@@ -1,0 +1,11 @@
+<h1>
+  Private conversation with <%= @conversation.get_correspondant(current_user).first_name %>
+</h1>
+
+<%= render "messages/form" %>
+
+<div class="messages mt-4">
+  <% @conversation.messages.order("created_at desc").each do |message| %>
+    <%= render "messages/message", message: message %>
+  <% end %>
+</div>

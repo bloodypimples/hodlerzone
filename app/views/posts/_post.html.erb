@@ -1,8 +1,12 @@
 <div class="media mt-4" id="post<%= post.id %>">
   <% if post.poster %>
-    <img class="mr-3 post user image" src="<%= post.poster.image.url(:thumb) %>">
+    <a href="<%= user_path(post.poster) %>">
+      <img class="mr-3 post user image" src="<%= post.poster.image.url(:thumb) %>">
+    </a>
   <% else %>
-    <img class="mr-3 post user image" src="<%= post.user.image.url(:thumb) %>">
+    <a href="<%= user_path(post.user) %>">
+      <img class="mr-3 post user image" src="<%= post.user.image.url(:thumb) %>">
+    </a>
   <% end %>
   <div class="media-body">
     <h5 class="mt-0">

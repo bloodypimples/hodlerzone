@@ -1,5 +1,8 @@
 class User < ApplicationRecord
+  has_many :messages
   has_many :posts
+  has_many :conversations
+  has_many :inverse_conversations, class_name: "Conversation", foreign_key: "friend_id"
   has_attached_file :image, styles: { large: ["500x500>", :jpg], medium: ["250x250>", :jpg], thumb: ["80x80", :jpg] }, default_url: "/assets/default.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   after_commit :compress_image, on: [:create, :update]
@@ -57,5 +60,9 @@ class User < ApplicationRecord
 
   def self.search(q)
     where("first_name LIKE ? or last_name LIKE ? or first_name || ' ' || last_name LIKE ? or last_name || ' ' || first_name LIKE ?", "%#{q}%", "%#{q}%", "%#{q}%", "%#{q}%")
+  end
+
+  def get_all_conversations
+    self.conversations + self.inverse_conversations
   end
 end

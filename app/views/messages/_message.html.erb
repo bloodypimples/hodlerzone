@@ -1,0 +1,14 @@
+<div class="media mb-4 <%= 'friend message' if current_user != message.user %>">
+  <a href="<%= user_path(message.user) %>">
+    <img class="user image <%= if current_user != message.user then 'ml-3' else 'mr-3' end  %>" src="<%= message.user.image.url(:thumb) %>">
+  </a>
+  <div class="media-body">
+    <h5 class="mt-0">
+      <a href="<%= user_path(message.user) %>"><%= message.user.first_name %></a>
+    </h5>
+    <small><%= time_ago_in_words(message.created_at) %></small>
+    <p>
+      <%= message.body %>
+    </p>
+  </div>
+</div>

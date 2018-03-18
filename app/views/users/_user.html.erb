@@ -21,7 +21,13 @@
     <% if user == current_user %>
       <a href="<%= edit_user_registration_path %>">Edit profile</a>
     <% end %>
-    <%= render 'partials/add_friend', user: @user %>
+
+    <div class="btn-group" role="group">
+      <%= render 'partials/add_friend', user: @user %>
+      <% if current_user != @user && user_signed_in? %>
+        <%= button_to "Message", conversations_path(friend_id: @user.id), class: "btn btn-small btn-primary" %>
+      <% end %>
+    </div>
   </div>
 
   <div class="row user friends card">
