@@ -60,3 +60,6 @@ gem 'paperclip', '~> 6.0'
 gem 'acts_as_votable', '~> 0.11.1'
 
 gem 'ransack', '~> 1.8', '>= 1.8.8'
+
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'
+gem 'will_paginate-bootstrap4'

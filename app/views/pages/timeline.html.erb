@@ -1,1 +1,11 @@
 <%= render 'posts/form', placeholder: get_post_hint %>
+
+<div class="posts">
+  <% @posts.each do |post| %>
+    <%= render 'posts/post', post: post %>
+  <% end %>
+</div>
+
+<div class="mt-4">
+  <%= will_paginate @posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>

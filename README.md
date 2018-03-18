@@ -1,6 +1,4 @@
 # Todos
-* Search for a user
-* Global timeline
 * Send private messages
 
 # Production notes

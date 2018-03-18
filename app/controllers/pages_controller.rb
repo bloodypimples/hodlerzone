@@ -1,7 +1,8 @@
 class PagesController < ApplicationController
   def home
     if user_signed_in?
-      render 'pages/timeline'
+      @posts = Post.posts.order("created_at desc").paginate(page: params[:page], per_page: 20)
+      render 'pages/timeline', posts: @posts
     else
       @minimum_password_length = Devise.password_length.min
       render 'devise/registrations/new'

@@ -4,4 +4,7 @@ class Post < ApplicationRecord
   belongs_to :poster, class_name: "User", foreign_key: "poster_id", optional: true
   has_many :replies, class_name: "Post", foreign_key: "post_id", dependent: :destroy
   validates :body, presence: true
+
+  scope :posts, -> { where(post_id: nil) }
+  scope :replies, -> { where.not(post_id: nil) }
 end
