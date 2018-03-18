@@ -8,6 +8,14 @@ class PagesController < ApplicationController
     end
   end
 
+  def search
+    if !params[:q].empty?
+      @friends = User.search(params[:q])
+    else
+      @friends = []
+    end
+  end
+
   # helpers
 
   helper_method :resource_name, :resource, :devise_mapping, :resource_class

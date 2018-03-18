@@ -54,4 +54,8 @@ class User < ApplicationRecord
       compress(self.image.path(:thumb))
     end
   end
+
+  def self.search(q)
+    where("first_name LIKE ? or last_name LIKE ? or first_name || ' ' || last_name LIKE ? or last_name || ' ' || first_name LIKE ?", "%#{q}%", "%#{q}%", "%#{q}%", "%#{q}%")
+  end
 end

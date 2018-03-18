@@ -58,3 +58,5 @@ gem 'devise', '~> 4.4', '>= 4.4.1'
 gem 'paperclip', '~> 6.0'
 
 gem 'acts_as_votable', '~> 0.11.1'
+
+gem 'ransack', '~> 1.8', '>= 1.8.8'

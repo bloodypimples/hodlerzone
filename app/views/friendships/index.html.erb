@@ -10,21 +10,7 @@
       <div class="row">
         <% group.each do |friend| %>
           <% if friend %>
-            <div class="col-md-6 friend">
-              <div class="media">
-                <%= image_tag(friend.image.url(:thumb), class: "mr-3") %>
-                <div class="media-body">
-                  <h5 class="mt-0">
-                    <a href="<%= user_path(friend) %>">
-                      <%= friend.first_name %> <%= friend.last_name %>
-                    </a>
-                  </h5>
-                  <p>
-                    <%= friend.bio %>
-                  </p>
-                </div>
-              </div>
-            </div>
+            <%= render "friendships/friend", friend: friend %>
           <% end %>
         <% end %>
       </div>

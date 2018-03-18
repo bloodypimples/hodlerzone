@@ -1,9 +1,8 @@
 # Todos
-* Make posts on other people's walls
 * Search for a user
-* Timeline
-* Recommended hodlers
+* Global timeline
 * Send private messages
 
 # Production notes
 * ImageMagick must be installed for paperclip
+* || used in User.search might not work in production postgresql

@@ -1,0 +1,11 @@
+<h2 class="mb-5">Found <%= @friends.count %> result(s) for "<%= params[:q] %>"</h2>
+
+<% @friends.in_groups_of(2).each do |group| %>
+  <div class="row friends">
+    <% group.each do |friend| %>
+      <% if friend %>
+        <%= render "friendships/friend", friend: friend %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
