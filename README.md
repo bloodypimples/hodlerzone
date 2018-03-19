@@ -1,7 +1,5 @@
 # Todos
 * Send private messages:
-  * Message nav bar notifications
-  * Conversations index page
   * Action Cable
 
 # Production notes

@@ -63,10 +63,15 @@ class User < ApplicationRecord
   end
 
   def get_all_conversations
-    self.conversations + self.inverse_conversations
+    Conversation.where("user_id = ? OR friend_id = ?", self.id, self.id).order("created_at desc")
   end
 
   def full_name
     self.first_name + " " + self.last_name
+  end
+
+  def get_unread_messages
+    Conversation.where(user_id: self.id, user_read_at: nil)
+    .or(Conversation.where(friend_id: self.id, friend_read_at: nil))
   end
 end

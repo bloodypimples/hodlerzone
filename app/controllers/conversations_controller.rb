@@ -3,11 +3,15 @@ class ConversationsController < ApplicationController
   before_action :check_user_permission, only: [:show]
 
   def index
-    @conversations = current_user.conversations.order("updated_at desc")
+    @conversations = current_user.get_all_conversations
+    @conversations.each do |c|
+      c.mark_as_read(current_user)
+    end
   end
 
   def show
     @conversation = Conversation.find(params[:id])
+    @conversation.mark_as_read(current_user)
   end
 
   def create

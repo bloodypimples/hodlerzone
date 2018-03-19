@@ -1,15 +1,18 @@
 <h1>Inbox</h1>
 
 <div class="list-group">
-  <% @conversations.each do |conversation| %>
-    <a href="<%= conversation_path(conversation) %>" class="list-group-item list-group-item-action flex-column align-items-start">
-      <h5 class="mb-1"><%= conversation.get_correspondant(current_user).full_name %></h5>
-      <p>
-        <%= if conversation.messages.last.user == current_user then "You" else conversation.messages.last.user.first_name end %>
-        :
-        <%= conversation.messages.last.body %>
-      </p>
-      <small><%= time_ago_in_words(conversation.messages.last.created_at) %> ago</small>
-    </a>
+  <% if @conversations %>
+    <% @conversations.each do |conversation| %>
+      <a href="<%= conversation_path(conversation) %>" class="list-group-item list-group-item-action flex-column align-items-start">
+        <h5 class="mb-1"><%= conversation.get_correspondant(current_user).full_name %></h5>
+        <p>
+          <%= if conversation.messages.last.user == current_user then "You" else conversation.messages.last.user.first_name end %>:
+          <%= conversation.messages.last.body %>
+        </p>
+        <small><%= time_ago_in_words(conversation.messages.last.created_at) %> ago</small>
+      </a>
+    <% end %>
+  <% else %>
+    <p>No conversations available</p>
   <% end %>
 </div>
