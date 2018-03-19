@@ -3,6 +3,7 @@ class ConversationsController < ApplicationController
   before_action :check_user_permission, only: [:show]
 
   def index
+    @conversations = current_user.conversations.order("updated_at desc")
   end
 
   def show
@@ -29,7 +30,7 @@ class ConversationsController < ApplicationController
   def check_user_permission
     if current_user.conversations.where(id: params[:id]).empty? && current_user.inverse_conversations.where(id: params[:id]).empty?
       flash[:alert] = "Conversation does not exist."
-      redirect_back(fallback_location: root_path)
+      redirect_to root_path
     end
   end
 end

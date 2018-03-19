@@ -7,6 +7,7 @@ class MessagesController < ApplicationController
     @message.conversation_id = @conversation.id
 
     if @conversation.user_has_permission?(current_user) && @message.save
+      @conversation.update(updated_at: Time.zone.now)
       flash[:notice] = "Message sent."
       redirect_back(fallback_location: root_path)
     else
