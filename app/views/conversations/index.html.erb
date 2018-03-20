@@ -1,7 +1,7 @@
 <h1>Inbox</h1>
 
 <div class="list-group">
-  <% if @conversations %>
+  <% if !@conversations.empty? %>
     <% @conversations.each do |conversation| %>
       <a href="<%= conversation_path(conversation) %>" class="list-group-item list-group-item-action flex-column align-items-start">
         <h5 class="mb-1"><%= conversation.get_correspondant(current_user).full_name %></h5>
