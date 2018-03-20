@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :conversations
   has_many :inverse_conversations, class_name: "Conversation", foreign_key: "friend_id"
-  has_attached_file :image, styles: { large: ["500x500>", :jpg], medium: ["250x250>", :jpg], thumb: ["80x80", :jpg] }, default_url: "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&s=200"
+  has_attached_file :image, styles: { large: ["500x500>", :jpg], medium: ["250x250>", :jpg], thumb: ["80x80", :jpg] }, default_url: "/assets/default.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   after_commit :compress_image, on: [:create, :update]
   # Include default devise modules. Others available are:
