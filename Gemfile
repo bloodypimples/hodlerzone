@@ -60,7 +60,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise', '~> 4.4', '>= 4.4.1'
 
-gem 'paperclip', '~> 6.0'
+gem 'paperclip', '~> 5.1'
 
 gem 'acts_as_votable', '~> 0.11.1'
 
