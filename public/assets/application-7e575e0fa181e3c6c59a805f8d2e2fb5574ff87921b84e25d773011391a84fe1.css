@@ -1,0 +1,197 @@
+/* line 3, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+body {
+  font-weight: 100;
+  padding: 100px 0px;
+  background-color: black;
+  color: white;
+}
+
+/* line 10, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.light {
+  font-weight: 100;
+}
+
+/* line 14, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.strong {
+  font-weight: 400;
+}
+
+/* line 18, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.form-group.inline {
+  display: flex;
+  justify-content: space-between;
+}
+/* line 21, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.form-group.inline > .form-group {
+  width: 48%;
+  flex-basis: 1;
+}
+
+/* line 27, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.user.card {
+  background-color: black;
+  border: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding-bottom: 30px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 30px;
+}
+/* line 38, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.user.card .profile-picture {
+  max-width: 200px;
+}
+/* line 40, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.user.card .profile-picture img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.25rem;
+}
+/* line 46, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.user.card h2 {
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+/* line 52, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.btn-primary {
+  margin-bottom: 15px;
+}
+
+/* line 57, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+form .btn-primary {
+  margin-bottom: 0px;
+}
+
+/* line 63, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.btn-group > form:first-child .btn {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+/* line 67, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.btn-group > form:last-child .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* line 75, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+#error_explanation ul li {
+  color: #dc3545;
+}
+
+/* line 82, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.user.friends.card .row {
+  margin: 0px;
+  width: 100%;
+}
+/* line 85, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.user.friends.card .row .row {
+  margin-bottom: 20px;
+}
+/* line 87, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.user.friends.card .row .row .col-4 {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+/* line 90, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.user.friends.card .row .row .col-4 img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.25rem;
+}
+
+/* line 100, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.avatar.overlay {
+  position: absolute;
+  right: 5px;
+  left: 5px;
+  height: 100%;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: linear-gradient(transparent, #333);
+  color: white;
+}
+
+/* line 113, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.moon {
+  width: 100%;
+}
+/* line 115, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.moon img {
+  width: 100%;
+}
+
+/* line 120, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.user.show {
+  padding-top: 30px;
+}
+
+/* line 125, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.friends h2 {
+  margin-bottom: 30px;
+}
+/* line 128, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.friends .friend {
+  margin-bottom: 30px;
+}
+
+/* line 133, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.mobile_friends_count {
+  display: none;
+}
+
+/* line 138, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.friend img {
+  width: 80px;
+}
+
+/* line 144, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.reply.form.hidden {
+  display: none;
+}
+
+/* line 149, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.user.image {
+  width: 80px;
+}
+
+/* line 153, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.hidden {
+  display: none;
+}
+
+/* line 158, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.friend.message > a {
+  order: 1;
+}
+/* line 161, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+.friend.message .media-body {
+  text-align: right;
+}
+
+@media (max-width: 767px) {
+  /* line 167, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+  .user.friends.card {
+    display: none;
+  }
+
+  /* line 170, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+  .mobile_friends_count {
+    display: block;
+  }
+}
+@media (max-width: 991px) {
+  /* line 176, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+  .banner {
+    margin-bottom: 30px;
+  }
+  /* line 177, /Users/macbook/Desktop/dev/active/hodlerzone/app/assets/stylesheets/application.scss */
+  .banner .moon {
+    position: absolute;
+  }
+}
