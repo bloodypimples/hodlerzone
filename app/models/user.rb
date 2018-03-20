@@ -4,7 +4,9 @@ class User < ApplicationRecord
   has_many :posts
   has_many :conversations
   has_many :inverse_conversations, class_name: "Conversation", foreign_key: "friend_id"
-  has_attached_file :image, styles: { large: ["500x500>", :jpg], medium: ["250x250>", :jpg], thumb: ["80x80", :jpg] }, default_url: lambda { |image| ActionController::Base.helpers.asset_path('default.png') }
+  has_attached_file :image,
+  styles: { large: ["500x500>", :jpg], medium: ["250x250>", :jpg], thumb: ["80x80", :jpg] },
+  default_url: lambda { |image| ActionController::Base.helpers.asset_path('default.png') }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   validates_attachment_size :image, :in => 0.kilobytes..100.kilobytes, message: "size has to be under 100 KB"
   # Include default devise modules. Others available are:
