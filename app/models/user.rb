@@ -1,11 +1,12 @@
 class User < ApplicationRecord
+  after_validation :clean_paperclip_errors
   has_many :messages
   has_many :posts
   has_many :conversations
   has_many :inverse_conversations, class_name: "Conversation", foreign_key: "friend_id"
   has_attached_file :image, styles: { large: ["500x500>", :jpg], medium: ["250x250>", :jpg], thumb: ["80x80", :jpg] }, default_url: lambda { |image| ActionController::Base.helpers.asset_path('default.png') }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
-  after_commit :compress_image, on: [:create, :update]
+  validates_attachment_size :image, :in => 0.kilobytes..100.kilobytes, message: "size has to be under 100 KB"
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -46,18 +47,6 @@ class User < ApplicationRecord
     end
   end
 
-  def compress(image_path)
-    system "convert #{image_path} -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace sRGB #{image_path}"
-  end
-
-  def compress_image
-    if self.image?
-      compress(self.image.path(:large))
-      compress(self.image.path(:medium))
-      compress(self.image.path(:thumb))
-    end
-  end
-
   def self.search(q)
     where("first_name LIKE ? or last_name LIKE ? or first_name || ' ' || last_name LIKE ? or last_name || ' ' || first_name LIKE ?", "%#{q}%", "%#{q}%", "%#{q}%", "%#{q}%")
   end
@@ -73,5 +62,11 @@ class User < ApplicationRecord
   def get_unread_messages
     Conversation.where(user_id: self.id, user_read_at: nil)
     .or(Conversation.where(friend_id: self.id, friend_read_at: nil))
+  end
+
+  private
+
+  def clean_paperclip_errors
+    errors.delete(:image)
   end
 end
